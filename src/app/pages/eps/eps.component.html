@@ -1,0 +1,295 @@
+<!--<app-basic-line-echarts></app-basic-line-echarts>-->
+<div class="container-fluid-graph">
+
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="options" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="options2" class="chart"></div>
+    </div>
+  </div>
+  <!--Barra de heerramientas EPS OutCurrent-->
+  <div class="row" id="date-range">
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="startDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputStarDate"
+          (ngModelChange)="btnWeekEPSOutCurrent(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="endDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputEndDate"
+          (ngModelChange)="btnWeekEPSOutCurrent(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnWeekEPSOutCurrent(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnWeekEPSOutCurrent(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnWeekEPSOutCurrent(1)"
+      >
+        24h
+      </button>
+    </div>
+
+  <!--=================================================-->
+  <!-- Barra de Herramientas grafica output channels -->
+  <!--=================================================-->
+  <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">
+        Start Date
+      </span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="OutChannelStartDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputOutChannelStartDate"
+        (ngModelChange)="btnWeekEPSOutChannel(4)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="OutChannelEndDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputOutChannelEndDate"
+        (ngModelChange)="btnWeekEPSOutChannel(5)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnWeekEPSOutChannel(7)"
+    >
+      1 week
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnWeekEPSOutChannel(3)"
+    >
+      3 day
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-sm"
+      (click)="btnWeekEPSOutChannel(1)"
+    >
+      24h
+    </button>
+  </div>
+
+
+  
+
+
+<!--
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">
+        Start time
+      </span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="fecha_nacimiento"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">
+        Start time
+      </span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="fecha_nacimiento"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-sm"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2 col-sm-8" style="height: 50px;">
+    <button type="button" class="btn btn-primary btn-sm">1 week</button>
+    <button type="button" class="btn btn-primary btn-sm">1 day</button>
+    <button type="button" class="btn btn-secondary btn-sm">24h</button>
+  </div>
+
+-->
+
+</div>
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSCurIn" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSTemp" class="chart"></div>
+    </div>
+  </div>
+  <!--=========================================================-->
+  <!-- Barra de herramientas Curin-->
+  <!-- ========================================================-->
+  <div class="row" id="date-range">
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="curinstartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputCurinStartDate"
+          (ngModelChange)="btnEPSCurin(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="curinendDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputCurinEndDate"
+          (ngModelChange)="btnEPSCurin(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSCurin(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSCurin(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSCurin(1)"
+      >
+        24h
+      </button>
+    </div>
+    
+    <!--=========================================================-->
+    <!-- Barra de herramientas Temp-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="tempStartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputTempStartDate"
+          (ngModelChange)="btnEPSTemp(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="tempEndDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputTempEndDate"
+          (ngModelChange)="btnEPSTemp(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSTemp(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSTemp(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSTemp(1)"
+      >
+        24h
+      </button>
+    </div>
+</div>

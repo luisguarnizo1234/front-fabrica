@@ -1,0 +1,53 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { SatelliteComponent } from './components/satellite/satellite.component';
+import { BasicLineEchartsComponent } from './components/echarts/line/basic-line-echarts/basic-line-echarts.component';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
+import { AppRoutingModule } from './app-routing.module';
+import * as echarts from 'echarts';
+import { TelemetryComponent } from './pages/telemetry/telemetry.component';
+import { MenuBarComponent } from './components/page-tools/menu-bar/menu-bar.component';
+import { EpsComponent } from './pages/eps/eps.component';
+import { Ax100Component } from './pages/ax100/ax100.component';
+import { CamComponent } from './pages/cam/cam.component';
+import { AdcsComponent } from './pages/adcs/adcs.component';
+import { ObcComponent } from './pages/obc/obc.component';
+import { EchartService } from './services/echart.service';
+import { ClockComponent } from './reloj/clock/clock.component';
+import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.component';
+
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    SatelliteComponent,
+    BasicLineEchartsComponent,
+    TelemetryComponent,
+    MenuBarComponent,
+    EpsComponent,
+    Ax100Component,
+    CamComponent,
+    AdcsComponent,
+    ObcComponent,
+    ClockComponent,
+    EPSCurrentGraphComponent
+   ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgxEchartsModule.forRoot({echarts}),
+    
+    AppRoutingModule,
+    MatButtonModule
+  ],
+  providers: [EchartService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

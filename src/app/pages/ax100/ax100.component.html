@@ -1,0 +1,130 @@
+<!--<app-basic-line-echarts></app-basic-line-echarts>-->
+<div class="container-fluid-graph">
+    <div class="row">
+      <div class="col col-12 col-md">
+        <div echarts [options]="options" class="chart"></div>
+      </div>
+      <div class="col col-12 col-md">
+        <div echarts [options]="options2" class="chart"></div>
+      </div>
+    </div>
+    <!--Barra de heerramientas de las gráficas-->
+    <div class="row" id="date-range">
+      <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="startDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputStarDate"
+            (ngModelChange)="btnWeekEPSOutCurrent(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="endDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputEndDate"
+            (ngModelChange)="btnWeekEPSOutCurrent(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnWeekEPSOutCurrent(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnWeekEPSOutCurrent(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnWeekEPSOutCurrent(1)"
+        >
+          24h
+        </button>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start time
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="fecha_nacimiento"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start time
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="fecha_nacimiento"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2 col-sm-8" style="height: 50px;">
+        <button type="button" class="btn btn-primary btn-sm">1 week</button>
+        <button type="button" class="btn btn-primary btn-sm">1 day</button>
+        <button type="button" class="btn btn-secondary btn-sm">24h</button>
+      </div>
+    </div>
+    <!--=================================================-->
+  
+    <div class="row">
+      <div class="col col-12 col-md">
+        <div echarts [options]="options3" class="chart"></div>
+      </div>
+      <div class="col col-12 col-md">
+        <div echarts [options]="options3" class="chart"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-12 col-md">
+        <div echarts [options]="options4" class="chart"></div>
+      </div>
+      <div class="col col-12 col-md">
+        <div echarts [options]="options4" class="chart"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-12 col-md">
+        <div echarts [options]="options5" class="chart"></div>
+      </div>
+      <div class="col col-12 col-md">
+        2
+      </div>
+    </div>
+  </div>
+  
