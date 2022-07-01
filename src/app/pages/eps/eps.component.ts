@@ -16,12 +16,14 @@ export class EpsComponent implements OnInit {
   optionEPSCurIn!: EChartsOption
 
   optionEPSTemp!: EChartsOption
+  optionEPSWdt!: EChartsOption
+  optionEPSSolar!: EChartsOption
+  optionEPSVbatt!: EChartsOption
+  optionEPSLatchups!: EChartsOption
 
   options4!: EChartsOption
   options5!: EChartsOption
-
   options6!: EChartsOption
-
   options9!: EChartsOption
   options10!: EChartsOption
   data: any
@@ -41,6 +43,18 @@ export class EpsComponent implements OnInit {
 
   inputTempStartDate: string
   inputTempEndDate: string
+
+  inputWdtStartDate: string
+  inputWdtEndDate: string
+
+  inputSolarStartDate: string
+  inputSolarEndDate: string
+
+  inputVbattStartDate: string
+  inputVbattEndDate: string
+
+  inputLatchupsStartDate: string
+  inputLatchupsEndDate: string
 
   isRealTime: boolean
 
@@ -70,6 +84,18 @@ export class EpsComponent implements OnInit {
   TempEndDate = new Date()
   TempStartDate = new Date()
 
+  wdtEndDate = new Date()
+  wdtStartDate = new Date()
+
+  solarEndDate = new Date()
+  solarStartDate = new Date()
+
+  vbattEndDate = new Date()
+  vbattStartDate = new Date()
+
+  latchupsEndDate = new Date()
+  latchupsStartDate = new Date()
+
   //===================================================
   //Fecha en number o mili segundos
   //===================================================
@@ -86,6 +112,18 @@ export class EpsComponent implements OnInit {
   numTempStartDate: number
   numTempEndDate: number
 
+  numEPSWdtStartDate : number
+  numEPSWdtEndDate : number
+
+  numEPSSolarStartDate : number
+  numEPSSolarEndDate : number
+
+  numEPSVbattStartDate : number
+  numEPSVbattEndDate : number
+
+  numEPSLatchupsStartDate : number
+  numEPSLatchupsEndDate : number
+
   timeUpdate = 120000
   r = 0
 
@@ -99,6 +137,10 @@ export class EpsComponent implements OnInit {
     this.btnWeekEPSOutChannel(4)
     this.btnEPSCurin(4)
     this.btnEPSTemp(4)
+    this.btnEPSWdt(4)
+    this.btnEPSSolar(4)
+    this.btnEPSVbatt(4)
+    this.btnEPSLatchups(4)
   }
 
   ngOnInit(): void {
@@ -107,6 +149,10 @@ export class EpsComponent implements OnInit {
     this.btnWeekEPSOutChannel(0)
     this.btnEPSCurin(0)
     this.btnEPSTemp(0)
+    this.btnEPSWdt(0)
+    this.btnEPSSolar(0)
+    this.btnEPSVbatt(0)
+    this.btnEPSLatchups(0)
 
     this.getData()
   }
@@ -128,6 +174,18 @@ export class EpsComponent implements OnInit {
 
     this.inputTempEndDate = this.TempEndDate.toISOString().slice(0, 16)
     this.inputTempStartDate = this.TempStartDate.toISOString().slice(0, 16)
+
+    this.inputWdtEndDate = this.wdtEndDate.toISOString().slice(0, 16)
+    this.inputWdtStartDate = this.wdtStartDate.toISOString().slice(0, 16)
+    
+    this.inputSolarEndDate = this.solarEndDate.toISOString().slice(0, 16)
+    this.inputSolarStartDate = this.solarStartDate.toISOString().slice(0, 16)
+
+    this.inputVbattEndDate = this.vbattEndDate.toISOString().slice(0, 16)
+    this.inputVbattStartDate = this.vbattStartDate.toISOString().slice(0, 16)
+
+    this.inputLatchupsEndDate = this.latchupsEndDate.toISOString().slice(0, 16)
+    this.inputLatchupsStartDate = this.latchupsStartDate.toISOString().slice(0, 16)
   }
 
   /**
@@ -294,7 +352,7 @@ export class EpsComponent implements OnInit {
     //console.log('------------------------------------------------')
 
   }
-//==================================================================
+  //==================================================================
   //Boton EPS Temp
   //==================================================================
   btnEPSTemp(opcion: number) {
@@ -340,6 +398,172 @@ export class EpsComponent implements OnInit {
     this.numTempEndDate = this.converterDateToNumber(this.TempEndDate)
   }
 
+  //==================================================================
+  //Boton EPS Watchdogs
+  //==================================================================
+  btnEPSWdt(opcion: number) {
+    this.isRealTime = false
+    switch (opcion) {
+      case 7:
+        this.wdtEndDate = new Date()
+        this.wdtStartDate = new Date(
+          new Date().setDate(this.wdtEndDate.getDate() - 7),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 3:
+        this.wdtEndDate = new Date()
+        this.wdtStartDate = new Date(
+          new Date().setDate(this.wdtEndDate.getDate() - 3),
+        )     
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 4:
+        this.wdtStartDate = new Date(this.inputWdtStartDate)
+        break
+      case 5:
+        this.wdtEndDate = new Date(this.inputWdtEndDate)
+        break
+      default:
+        this.wdtEndDate = new Date()
+        this.wdtStartDate = new Date(
+          new Date().setDate(this.wdtEndDate.getDate() - 0.1),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+    }
+
+    this.numEPSWdtStartDate = this.converterDateToNumber(this.wdtStartDate)
+    this.numEPSWdtEndDate = this.converterDateToNumber(this.wdtEndDate)
+  }
+  
+  //==================================================================
+  //Boton EPS Solar array
+  //==================================================================
+  btnEPSSolar(opcion: number) {
+    this.isRealTime = false
+    switch (opcion) {
+      case 7:
+        this.solarEndDate = new Date()
+        this.solarStartDate = new Date(
+          new Date().setDate(this.solarEndDate.getDate() - 7),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 3:
+        this.solarEndDate = new Date()
+        this.solarStartDate = new Date(
+          new Date().setDate(this.solarEndDate.getDate() - 3),
+        )     
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 4:
+        this.solarStartDate = new Date(this.inputSolarStartDate)
+        break
+      case 5:
+        this.solarEndDate = new Date(this.inputSolarEndDate)
+        break
+      default:
+        this.solarEndDate = new Date()
+        this.solarStartDate = new Date(
+          new Date().setDate(this.solarEndDate.getDate() - 0.1),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+    }
+
+    this.numEPSSolarStartDate = this.converterDateToNumber(this.solarStartDate)
+    this.numEPSSolarEndDate = this.converterDateToNumber(this.solarEndDate)
+  }
+  //==================================================================
+  //Boton EPS Vbatt
+  //==================================================================
+  btnEPSVbatt(opcion: number) {
+    this.isRealTime = false
+    switch (opcion) {
+      case 7:
+        this.vbattEndDate = new Date()
+        this.vbattStartDate = new Date(
+          new Date().setDate(this.vbattEndDate.getDate() - 7),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 3:
+        this.vbattEndDate = new Date()
+        this.vbattStartDate = new Date(
+          new Date().setDate(this.vbattEndDate.getDate() - 3),
+        )     
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 4:
+        this.vbattStartDate = new Date(this.inputVbattStartDate)
+        break
+      case 5:
+        this.vbattEndDate = new Date(this.inputVbattEndDate)
+        break
+      default:
+        this.vbattEndDate = new Date()
+        this.vbattStartDate = new Date(
+          new Date().setDate(this.vbattEndDate.getDate() - 0.1),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+    }
+
+    this.numEPSVbattStartDate = this.converterDateToNumber(this.vbattStartDate)
+    this.numEPSVbattEndDate = this.converterDateToNumber(this.vbattEndDate)
+  }
+  //==================================================================
+  //Boton EPS Latchups
+  //==================================================================
+  btnEPSLatchups(opcion: number) {
+    this.isRealTime = false
+    switch (opcion) {
+      case 7:
+        this.latchupsEndDate = new Date()
+        this.latchupsStartDate = new Date(
+          new Date().setDate(this.latchupsEndDate.getDate() - 7),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 3:
+        this.latchupsEndDate = new Date()
+        this.latchupsStartDate = new Date(
+          new Date().setDate(this.latchupsEndDate.getDate() - 3),
+        )     
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 4:
+        this.latchupsStartDate = new Date(this.inputLatchupsStartDate)
+        break
+      case 5:
+        this.latchupsEndDate = new Date(this.inputLatchupsEndDate)
+        break
+      default:
+        this.latchupsEndDate = new Date()
+        this.latchupsStartDate = new Date(
+          new Date().setDate(this.latchupsEndDate.getDate() - 0.1),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+    }
+
+    this.numEPSLatchupsStartDate = this.converterDateToNumber(this.latchupsStartDate)
+    this.numEPSLatchupsEndDate = this.converterDateToNumber(this.latchupsEndDate)
+  }
+  
 
   //metodos para calcular fechas
   converterDateToNumber(fecha: Date): number {
@@ -370,6 +594,18 @@ export class EpsComponent implements OnInit {
           this.TempEndDate = new Date()
           this.numTempEndDate = this.converterDateToNumber(this.TempEndDate)
 
+          this.wdtEndDate = new Date()
+          this.numEPSWdtEndDate = this.converterDateToNumber(this.wdtEndDate)
+
+          this.solarEndDate = new Date()
+          this.numEPSSolarEndDate = this.converterDateToNumber(this.solarEndDate)
+
+          this.vbattEndDate = new Date()
+          this.numEPSVbattEndDate = this.converterDateToNumber(this.vbattEndDate)
+
+          this.latchupsEndDate = new Date()
+          this.numEPSLatchupsEndDate = this.converterDateToNumber(this.latchupsEndDate)
+
         }
 
         // FIX ME
@@ -379,9 +615,11 @@ export class EpsComponent implements OnInit {
         this.getDataGraphTwo()
         this.getDataGraphEPSCurIn()
         this.getDataGraphEPSTemp()
-       //// this.getDataGraphThree()
-        //this.getDataGraphFour()
-        //this.getDataGraphFive()
+        this.getDataGraphEPSWdt()
+        this.getDataGraphEPSSolar()
+        this.getDataGraphEPSVbatt()
+        this.getDataGraphEPSLatchups()
+
       })
   }
   //EPS OUTCURRENT
@@ -490,24 +728,14 @@ export class EpsComponent implements OnInit {
           yAxis: [
             {
               type: 'value',
-              name: 'WDE',
+              name: 'curOut',
               min: 0,
               max: 400,
               interval: 50,
               axisLabel: {
                 formatter: '{value} mA',
               },
-            },
-            {
-              type: 'value',
-              name: 'GPS',
-              min: 0,
-              max: 400,
-              interval: 50,
-              axisLabel: {
-                formatter: '{value} mV',
-              },
-            },
+            }
           ],
           series: [
             {
@@ -523,12 +751,12 @@ export class EpsComponent implements OnInit {
             },
             {
               name: 'GPS',
-              yAxisIndex: 1,
+              //yAxisIndex: 1,
               data: reqCuroutGPS.data,
               type: 'line',
               tooltip: {
                 valueFormatter: function (value) {
-                  return value + ' mV'
+                  return value + ' mA'
                 },
               },
             },
@@ -536,21 +764,41 @@ export class EpsComponent implements OnInit {
               name: 'AX100',
               data: reqCuroutAX100.data,
               type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
             },
             {
               name: 'CAM',
               data: reqCuroutCAM.data,
               type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
             },
             {
               name: 'ADCS',
               data: reqCuroutADCS.data,
               type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
             },
             {
               name: 'OBC',
               data: reqCuroutOBC.data,
               type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
             },
           ],
         }
@@ -788,16 +1036,6 @@ export class EpsComponent implements OnInit {
                 formatter: '{value} mA',
               },
             },
-            {
-              type: 'value',
-              name: 'GPS',
-              min: 0,
-              max: 700,
-              interval: 50,
-              axisLabel: {
-                formatter: '{value} mV',
-              },
-            },
           ],
           series: [
             {
@@ -813,7 +1051,6 @@ export class EpsComponent implements OnInit {
             },
             {
               name: 'Curin[1]',
-              yAxisIndex: 1,
               data: reqCurIn1.data,
               type: 'line',
               tooltip: {
@@ -824,7 +1061,6 @@ export class EpsComponent implements OnInit {
             },
             {
               name: 'Curin[2]',
-              yAxisIndex: 1,
               data: reqCurIn2.data,
               type: 'line',
               tooltip: {
@@ -850,8 +1086,7 @@ export class EpsComponent implements OnInit {
         'temp',
         0,      
         this.numTempStartDate,
-        this.numTempEndDate,
-                
+        this.numTempEndDate,         
       ),
       reqTemp1: this.echarService.getDataSatelliteTime(
         1,
@@ -889,8 +1124,6 @@ export class EpsComponent implements OnInit {
         this.numTempEndDate,
       ),
       
-      
-      
     }).subscribe(
       ({
         reqTemp0,
@@ -900,9 +1133,6 @@ export class EpsComponent implements OnInit {
         reqTemp4,
         reqTemp5,
       }: any) => {
-        ////console.log(reqCuroutWDE);
-        ////console.log(reqCuroutGPS);
-
         this.optionEPSTemp = {
           title: {
             text: 'EPS Temperature',
@@ -953,8 +1183,6 @@ export class EpsComponent implements OnInit {
                 formatter: '{value} °C',
               },
             },
-            
-            
           ],
           series: [
             {
@@ -1030,7 +1258,793 @@ export class EpsComponent implements OnInit {
     )
   }
 
+//========================================================================
+  //Grafica de EPS Watchdogs
+  //========================================================================
+  getDataGraphEPSWdt() {
+    // Consumo api backend
+    forkJoin({
+      reqCntWdtCsp0: this.echarService.getDataSatelliteTime(
+        1,
+        'cntWdtCsp',
+        0,      
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqCntWdtCsp1: this.echarService.getDataSatelliteTime(
+        1,
+        'cntWdtCsp',
+        1,
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqCntWdtGnd: this.echarService.getDataSatelliteTimeName(
+        1,
+        'cntWdtGnd',
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqCntWdtI2c: this.echarService.getDataSatelliteTimeName(
+        1,
+        'cntWdtI2c',
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqWdtGndS: this.echarService.getDataSatelliteTimeName(
+        1,
+        'wdtGndS',
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqWdtI2cS: this.echarService.getDataSatelliteTimeName(
+        1,
+        'wdtI2cS',
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqWdtCspC0: this.echarService.getDataSatelliteTime(
+        1,
+        'wdtCspC',
+        0,
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      reqWdtCspC1: this.echarService.getDataSatelliteTime(
+        1,
+        'wdtCspC',
+        1,
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      
+      
+      
+    }).subscribe(
+      ({
+        reqCntWdtCsp0,
+        reqCntWdtCsp1,
+        reqCntWdtGnd,
+        reqCntWdtI2c,
+        reqWdtGndS,
+        reqWdtI2cS,
+        reqWdtCspC0,
+        reqWdtCspC1,
+      }: any) => {
+        ////console.log(reqCuroutWDE);
+        ////console.log(reqCuroutGPS);
+        const colors = ['#5470C6', '#91CC75', '#EE6666'];
+        this.optionEPSWdt = {
+          title: {
+            text: 'EPS Watchdogs',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'axis',
+          },
+          legend: {
+            data: ['cntWdtCsp[0]', 'cntWdtCsp[1]', 'cntWdtGnd', 'cntWdtI2c', 'wdtGndS', 'wdtI2cS', 'wdtCspC[0]', 'wdtCspC[1]'],
+            top: '10%',
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            top: '20%',
+            containLabel: true,
+          },
+          toolbox: {
+            feature: {
+              dataZoom: {
+                yAxisIndex: 'none',
+              },
+              dataView: { readOnly: false },
+              magicType: { type: ['line', 'bar'] },
+              restore: {},
+              saveAsImage: {
+                type: 'png',
+                title: 'Save img',
+              },
+            },
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: reqCntWdtCsp0.dates,
+            },
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: 'time',
+              position: 'left',
+              alignTicks: true,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[0]
+                }
+              },
+              min: 90000,
+              max: 175000,
+              interval: 10000,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+            {
+              type: 'value',
+              name: 'reboots',
+              position: 'right',
+              alignTicks: true,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[1]
+                }
+              },
+              min: 0,
+              max: 260,
+              interval: 40,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+            {
+              type: 'value',
+              name: 'pings',
+              position: 'right',
+              alignTicks: true,
+              offset: 60,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[2]
+                }
+              },
+              min: 0,
+              max: 110,
+              interval: 10,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+            
+          ],
+          series: [
+            {
+              name: 'cntWdtCsp[0]',
+              //data: reqCuroutWDE.data.map((x: any) => x * this.r),
+              yAxisIndex: 1,
+              data: reqCntWdtCsp0.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ''
+                },
+              },
+            },
+            {
+              name: 'cntWdtCsp[1]',
+              yAxisIndex: 1,
+              data: reqCntWdtCsp1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ''
+                },
+              },
+            },
+            {
+              name: 'cntWdtGnd',
+              yAxisIndex: 1,
+              data: reqCntWdtGnd.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'cntWdtI2c',
+              yAxisIndex: 1,
+              data: reqCntWdtI2c.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ''
+                },
+              },
+            },
+            {
+              name: 'wdtGndS',
+              //yAxisIndex: 2,
+              data: reqWdtGndS.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' S'
+                },
+              },
+            },
+            
+            {
+              name: 'wdtCspC[0]',
+              yAxisIndex: 1,
+              data: reqWdtCspC0.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'wdtCspC[0]',
+              yAxisIndex: 1,
+              data: reqWdtCspC1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'wdtI2cS',
+              yAxisIndex: 2,
+              data: reqWdtI2cS.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' S'
+                },
+              },
+            },
 
+          ],
+        }
+      },
+    )
+  }
+
+  //========================================================================
+  //Grafica de Solar Array
+  //========================================================================
+  getDataGraphEPSSolar() {
+    // Consumo api backend
+    forkJoin({
+      reqVboost0: this.echarService.getDataSatelliteTime(
+        1,
+        'vboost',
+        0,      
+        this.numEPSSolarStartDate,
+        this.numEPSSolarEndDate,         
+      ),
+      reqVboost1: this.echarService.getDataSatelliteTime(
+        1,
+        'vboost',
+        1,
+        this.numEPSSolarStartDate,
+        this.numEPSSolarEndDate,
+      ),
+      reqVboost2: this.echarService.getDataSatelliteTime(
+        1,
+        'vboost',
+        2,
+        this.numEPSSolarStartDate,
+        this.numEPSSolarEndDate,
+      ),
+      reqCurIn0: this.echarService.getDataSatelliteTime(
+        1,
+        'curin',
+        0,      
+        this.numcurinStartDate,
+        this.numcurinEndDate,
+                
+      ),
+      reqCurIn1: this.echarService.getDataSatelliteTime(
+        1,
+        'curin',
+        1,
+        this.numcurinStartDate,
+        this.numcurinEndDate,
+      ),
+      reqCurIn2: this.echarService.getDataSatelliteTime(
+        1,
+        'curin',
+        2,
+        this.numcurinStartDate,
+        this.numcurinEndDate,
+      ),
+      reqPptmode: this.echarService.getDataSatelliteTimeName(
+        1,
+        'pptmode',
+        this.numEPSWdtStartDate,
+        this.numEPSWdtEndDate, 
+      ),
+      
+    }).subscribe(
+      ({
+        reqVboost0,
+        reqVboost1,
+        reqVboost2,
+        reqCurIn0,
+        reqCurIn1,
+        reqCurIn2,
+        reqPptmode,
+      }: any) => {
+        this.optionEPSSolar = {
+          title: {
+            text: 'EPS solar array',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'axis',
+          },
+          legend: {
+            data: ['vboost[0]', 'vboost[1]', 'vboost[2]', 'Curin[0]', 'Curin[1]', 'Curin[2]', 'pptmode'],
+            top: '10%',
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            top: '20%',
+            containLabel: true,
+          },
+          toolbox: {
+            feature: {
+              dataZoom: {
+                yAxisIndex: 'none',
+              },
+              dataView: { readOnly: false },
+              magicType: { type: ['line', 'bar'] },
+              restore: {},
+              saveAsImage: {
+                type: 'png',
+                title: 'Save img',
+              },
+            },
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: reqVboost0.dates,
+            },
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '',
+              min: 0,
+              max: 17500,
+              interval: 2000,
+              axisLabel: {
+                formatter: '{value} mV',
+              },
+            },
+            {
+              type: 'value',
+              name: '',
+              min: 0,
+              max: 550,
+              interval: 50,
+              axisLabel: {
+                formatter: '{value} mA',
+              },
+            },
+          ],
+          series: [
+            {
+              name: 'vboost[0]',
+              //data: reqCuroutWDE.data.map((x: any) => x * this.r),
+              data: reqVboost0.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mV'
+                },
+              },
+            },
+            {
+              name: 'vboost[1]',
+              //yAxisIndex: 1,
+              data: reqVboost1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mV'
+                },
+              },
+            },
+            {
+              name: 'vboost[2]',
+              //yAxisIndex: 1,
+              data: reqVboost2.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mV'
+                },
+              },
+            },
+            {
+              name: 'Curin[0]',
+              yAxisIndex: 1,
+              data: reqCurIn0.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
+            },
+            {
+              name: 'Curin[1]',
+              yAxisIndex: 1,
+              data: reqCurIn1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
+            },
+            {
+              name: 'Curin[2]',
+              yAxisIndex: 1,
+              data: reqCurIn2.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
+            },
+            {
+              name: 'pptmode',
+              yAxisIndex: 1,
+              data: reqPptmode.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+
+          ],
+        }
+      },
+    )
+  }
+
+  //========================================================================
+  //Grafica de VBatt
+  //========================================================================
+  getDataGraphEPSVbatt() {
+    // Consumo api backend
+    forkJoin({
+      reqVbatt: this.echarService.getDataSatelliteTimeName(
+        1,
+        'vbatt',
+        this.numEPSVbattStartDate,
+        this.numEPSVbattEndDate, 
+      ),
+      reqCursun: this.echarService.getDataSatelliteTimeName(
+        1,
+        'cursun',
+        this.numEPSVbattStartDate,
+        this.numEPSVbattEndDate, 
+      ),
+      reqCursys: this.echarService.getDataSatelliteTimeName(
+        1,
+        'cursys',
+        this.numEPSVbattStartDate,
+        this.numEPSVbattEndDate, 
+      ),
+      
+    }).subscribe(
+      ({
+        reqVbatt,
+        reqCursun,
+        reqCursys,
+      }: any) => {
+        this.optionEPSVbatt = {
+          title: {
+            text: 'EPS Vbatt',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'axis',
+          },
+          legend: {
+            data: ['vbatt', 'cursys', 'cursun'],
+            top: '10%',
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            top: '20%',
+            containLabel: true,
+          },
+          toolbox: {
+            feature: {
+              dataZoom: {
+                yAxisIndex: 'none',
+              },
+              dataView: { readOnly: false },
+              magicType: { type: ['line', 'bar'] },
+              restore: {},
+              saveAsImage: {
+                type: 'png',
+                title: 'Save img',
+              },
+            },
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: reqVbatt.dates,
+            },
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '',
+              min: 16700,
+              max: 15900,
+              interval: 100,
+              axisLabel: {
+                formatter: '{value} mV',
+              },
+            },
+            {
+              type: 'value',
+              name: '',
+              min: 0,
+              max: 600,
+              interval: 50,
+              axisLabel: {
+                formatter: '{value} mA',
+              },
+            },
+          ],
+          series: [
+            {
+              name: 'vbatt',
+              //data: reqCuroutWDE.data.map((x: any) => x * this.r),
+              data: reqVbatt.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mV'
+                },
+              },
+            },
+            {
+              name: 'cursun',
+              yAxisIndex: 1,
+              data: reqCursun.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
+            },
+            {
+              name: 'cursys',
+              yAxisIndex: 1,
+              data: reqCursys.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' mA'
+                },
+              },
+            },
+          ],
+        }
+      },
+    )
+  }
+
+  getDataGraphEPSLatchups() {
+    // Consumo api backend
+    forkJoin({
+      reqLatchups0: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        0,      
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,         
+      ),
+      reqLatchups1: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        1,
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,
+      ),
+      reqLatchups2: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        2,
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,
+      ),
+      reqLatchups3: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        3,
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,
+      ),
+      reqLatchups4: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        4,
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,
+      ),
+      reqLatchups5: this.echarService.getDataSatelliteTime(
+        1,
+        'latchups',
+        5,
+        this.numEPSLatchupsStartDate,
+        this.numEPSLatchupsEndDate,
+      ),
+      
+    }).subscribe(
+      ({
+        reqLatchups0,
+        reqLatchups1,
+        reqLatchups2,
+        reqLatchups3,
+        reqLatchups4,
+        reqLatchups5,
+      }: any) => {
+        this.optionEPSLatchups = {
+          title: {
+            text: 'EPS Latchups',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'axis',
+          },
+          legend: {
+            data: ['Latchups[0]', 'Latchups[1]', 'Latchups[2]', 'Latchups[3]', 'Latchups[4]', 'Latchups[5]'],
+            top: '10%',
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            top: '20%',
+            containLabel: true,
+          },
+          toolbox: {
+            feature: {
+              dataZoom: {
+                yAxisIndex: 'none',
+              },
+              dataView: { readOnly: false },
+              magicType: { type: ['line', 'bar'] },
+              restore: {},
+              saveAsImage: {
+                type: 'png',
+                title: 'Save img',
+              },
+            },
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: reqLatchups0.dates,
+            },
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '',
+              min: 0,
+              max: 30,
+              interval: 5,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+          ],
+          series: [
+            {
+              name: 'Latchups[0]',
+              data: reqLatchups0.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'Latchups[1]',
+              data: reqLatchups1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'Latchups[2]',
+              data: reqLatchups2.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'Latchups[3]',
+              data: reqLatchups3.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'Latchups[4]',
+              data: reqLatchups4.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'Latchups[5]',
+              data: reqLatchups5.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+
+          ],
+        }
+      },
+    )
+  }
 
   //===========================================================================
   //Cuarto grafico

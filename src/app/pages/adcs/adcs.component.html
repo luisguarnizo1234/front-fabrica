@@ -1,1 +1,390 @@
-<app-epscurrent-graph></app-epscurrent-graph>
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionModeStatus" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionWheels" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Mode Status-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="statusStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputStatusStartDate"
+            (ngModelChange)="btnStatus(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="statusEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputStatusEndDate"
+            (ngModelChange)="btnStatus(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnStatus(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnStatus(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnStatus(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas ADCS Wheels-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="wheelsStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputWheelsStartDate"
+            (ngModelChange)="btnWheels(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="WheelsEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputWheelsEndDate"
+            (ngModelChange)="btnWheels(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnWheels(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnWheels(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnWheels(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>
+<!--=========================================================-->
+<!-- segunda fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionControl" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionTorquer" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Control-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="controlStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputControlStartDate"
+            (ngModelChange)="btnControl(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="controlEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputControlEndDate"
+            (ngModelChange)="btnControl(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnControl(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnControl(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnControl(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas ADCS Torquer-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="torquerStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTorquerStartDate"
+            (ngModelChange)="btnTorquer(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="torquerEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTorquerEndDate"
+            (ngModelChange)="btnTorquer(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTorquer(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTorquer(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnTorquer(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>
+<!--=========================================================-->
+<!-- Tercera fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionBdot" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionTorquer" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Bdot-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="bdotStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputBdotStartDate"
+            (ngModelChange)="btnBdot(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="bdotEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputBdotEndDate"
+            (ngModelChange)="btnBdot(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnBdot(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnBdot(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnBdot(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas ADCS Torquer-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="torquerStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTorquerStartDate"
+            (ngModelChange)="btnTorquer(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="torquerEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTorquerEndDate"
+            (ngModelChange)="btnTorquer(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTorquer(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTorquer(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnTorquer(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>

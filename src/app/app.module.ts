@@ -20,6 +20,7 @@ import { ObcComponent } from './pages/obc/obc.component';
 import { EchartService } from './services/echart.service';
 import { ClockComponent } from './reloj/clock/clock.component';
 import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.component';
+import { ADCSSensorComponent } from './pages/adcs-sensor/adcs-sensor.component';
 
 
 
@@ -36,7 +37,8 @@ import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.co
     AdcsComponent,
     ObcComponent,
     ClockComponent,
-    EPSCurrentGraphComponent
+    EPSCurrentGraphComponent,
+    ADCSSensorComponent
    ],
   imports: [
     BrowserModule,

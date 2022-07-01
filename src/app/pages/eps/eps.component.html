@@ -166,6 +166,9 @@
 -->
 
 </div>
+<!--=========================================================-->
+<!-- segunda fila de graficas-->
+<!-- ========================================================-->  
 
 <div class="container-fluid-graph"></div>
   <!--======================================================-->
@@ -293,3 +296,266 @@
       </button>
     </div>
 </div>
+
+<!--=========================================================-->
+<!-- tercera fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSWdt" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSSolar" class="chart"></div>
+    </div>
+  </div>
+  <!--=========================================================-->
+  <!-- Barra de herramientas watch dog-->
+  <!-- ========================================================-->
+  <div class="row" id="date-range">
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="wdtStartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputWdtStartDate"
+          (ngModelChange)="btnEPSWdt(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="wdtEndDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputWdtEndDate"
+          (ngModelChange)="btnEPSWdt(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSWdt(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSWdt(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSWdt(1)"
+      >
+        24h
+      </button>
+    </div>
+    
+    <!--=========================================================-->
+    <!-- Barra de herramientas Solar Array-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="solarStartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputSolarStartDate"
+          (ngModelChange)="btnEPSSolar(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="solarEndDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputSolarEndDate"
+          (ngModelChange)="btnEPSSolar(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSSolar(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSSolar(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSSolar(1)"
+      >
+        24h
+      </button>
+    </div>
+</div>
+
+<!--=========================================================-->
+<!-- cuarta fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSVbatt" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionEPSLatchups" class="chart"></div>
+    </div>
+  </div>
+  <!--=========================================================-->
+  <!-- Barra de herramientas Vbatt-->
+  <!-- ========================================================-->
+  <div class="row" id="date-range">
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="vbattStartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputVbattStartDate"
+          (ngModelChange)="btnEPSVbatt(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="vbattEndDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputVbattEndDate"
+          (ngModelChange)="btnEPSVbatt(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSVbatt(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSVbatt(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSVbatt(1)"
+      >
+        24h
+      </button>
+    </div>
+    
+    <!--=========================================================-->
+    <!-- Barra de herramientas Solar Array-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          Start Date
+        </span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="latchupsStartDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputLatchupsStartDate"
+          (ngModelChange)="btnEPSLatchups(4)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="latchupsEndDate"
+          aria-describedby="inputGroup-sizing-sm"
+          [(ngModel)]="inputLatchupsEndDate"
+          (ngModelChange)="btnEPSLatchups(5)"
+        />
+      </div>
+    </div>
+
+    <div class="col col-1 col-md-2" style="height: 50px;">
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSLatchups(7)"
+      >
+        1 week
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        (click)="btnEPSLatchups(3)"
+      >
+        3 day
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="btnEPSSolar(1)"
+      >
+        24h
+      </button>
+    </div>
+</div>
+

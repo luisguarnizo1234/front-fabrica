@@ -8,6 +8,7 @@ import { ObcComponent } from './pages/obc/obc.component';
 import { Ax100Component } from './pages/ax100/ax100.component';
 import { AdcsComponent } from './pages/adcs/adcs.component';
 import { TelemetryComponent } from './pages/telemetry/telemetry.component';
+import { ADCSSensorComponent } from './pages/adcs-sensor/adcs-sensor.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'adcs',
     component: AdcsComponent
+  },
+  {
+    path: 'adcs-sensors',
+    component: ADCSSensorComponent
   },
 /*   {
     path: '',

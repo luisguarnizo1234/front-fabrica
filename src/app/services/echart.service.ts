@@ -30,7 +30,12 @@ export class EchartService {
     return this.httpClient.get<Satellite>(`${this.urlBase}/satellites/${node}/${variable}/${index}`)
   }
 
-  
+  getDataSatelliteTimeName(node: number, variable: string, startTime: number, endTime: number){
+
+    //console.log(`${this.urlBase}/satellites/${node}/${variable}/${index}/${startTime}/${endTime}`);
+
+    return this.httpClient.get<Satellite>(`${this.urlBase}/satellites/${node}/${variable}/${startTime}/${endTime}`)
+  }
 
   getDataSatelliteTime(node: number, variable: string, index: number, startTime: number, endTime: number){
 
