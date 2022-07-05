@@ -1,16 +1,263 @@
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
 
-<div class="row">
-    <div class="container-fluid-graph">    
-        <div class="row">
-            <div class="col col-12 col-md">
-                <app-epscurrent-graph></app-epscurrent-graph>
-            </div>
-            <div class="col col-12 col-md">
-                <app-epscurrent-graph></app-epscurrent-graph>
-            </div>
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionCamImgCount" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionPower" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas CAM Image Count-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="CamImgCountStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputCamImgCountStartDate"
+            (ngModelChange)="btnCamImgCount(4)"
+          />
         </div>
-        
-   
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="CamImgCountEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputCamImgCountEndDate"
+            (ngModelChange)="btnCamImgCount(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnCamImgCount(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnCamImgCount(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnCamImgCount(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas CAM Power-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="PowerStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputPowerStartDate"
+            (ngModelChange)="btnPower(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="PowerEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputPowerEndDate"
+            (ngModelChange)="btnPower(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnPower(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnPower(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnPower(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>
+
+<!--=========================================================-->
+<!-- segunda fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionTemp" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionOther" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas CAM Temperature-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="TempStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTempStartDate"
+            (ngModelChange)="btnTemp(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="TempEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputTempEndDate"
+            (ngModelChange)="btnTemp(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTemp(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnTemp(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnTemp(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas CAM Other-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="OtherStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputOtherStartDate"
+            (ngModelChange)="btnOther(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="OtherEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputOtherEndDate"
+            (ngModelChange)="btnOther(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnOther(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnOther(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnOther(1)"
+        >
+          24h
+        </button>
+      </div>
 </div>
     
     

@@ -269,7 +269,7 @@
       <div echarts [options]="optionBdot" class="chart"></div>
     </div>
     <div class="col col-12 col-md">
-      <div echarts [options]="optionTorquer" class="chart"></div>
+      <div echarts [options]="optionPower" class="chart"></div>
     </div>
   </div>
   
@@ -342,10 +342,10 @@
           <input
             type="datetime-local"
             class="form-control"
-            name="torquerStartDate"
+            name="powerStartDate"
             aria-describedby="inputGroup-sizing-sm"
-            [(ngModel)]="inputTorquerStartDate"
-            (ngModelChange)="btnTorquer(4)"
+            [(ngModel)]="inputPowerStartDate"
+            (ngModelChange)="btnPower(4)"
           />
         </div>
       </div>
@@ -356,10 +356,10 @@
           <input
             type="datetime-local"
             class="form-control"
-            name="torquerEndDate"
+            name="powerEndDate"
             aria-describedby="inputGroup-sizing-sm"
-            [(ngModel)]="inputTorquerEndDate"
-            (ngModelChange)="btnTorquer(5)"
+            [(ngModel)]="inputPowerEndDate"
+            (ngModelChange)="btnPower(5)"
           />
         </div>
       </div>
@@ -368,21 +368,21 @@
         <button
           type="button"
           class="btn btn-primary btn-sm"
-          (click)="btnTorquer(7)"
+          (click)="btnPower(7)"
         >
           1 week
         </button>
         <button
           type="button"
           class="btn btn-primary btn-sm"
-          (click)="btnTorquer(3)"
+          (click)="btnPower(3)"
         >
           3 day
         </button>
         <button
           type="button"
           class="btn btn-secondary btn-sm"
-          (click)="btnTorquer(1)"
+          (click)="btnPower(1)"
         >
           24h
         </button>

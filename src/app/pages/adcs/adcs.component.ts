@@ -24,6 +24,7 @@ export class AdcsComponent implements OnInit {
   optionControl!: EChartsOption
   optionTorquer!: EChartsOption
   optionBdot!: EChartsOption
+  optionPower!: EChartsOption
 
   //===================================================
   //FEchas Formato String
@@ -44,6 +45,9 @@ export class AdcsComponent implements OnInit {
   inputBdotStartDate: string
   inputBdotEndDate: string
 
+  inputPowerStartDate: string
+  inputPowerEndDate: string
+
   
   //===================================================
   //botones g
@@ -63,6 +67,9 @@ export class AdcsComponent implements OnInit {
   bdotEndDate = new Date()
   bdotStartDate = new Date()
 
+  powerEndDate = new Date()
+  powerStartDate = new Date()
+
   //===================================================
   //Fecha en number o mili segundos
   //===================================================
@@ -81,6 +88,9 @@ export class AdcsComponent implements OnInit {
   numBdotStartDate: number
   numBdotEndDate: number
 
+  numPowerStartDate: number
+  numPowerEndDate: number
+
   constructor(private echarService: EchartService) {}
 
   imprimirdate() {
@@ -92,6 +102,7 @@ export class AdcsComponent implements OnInit {
     this.btnControl(4)
     this.btnTorquer(4)
     this.btnBdot(4)
+    this.btnPower(4)
 
     
   }
@@ -102,6 +113,7 @@ export class AdcsComponent implements OnInit {
     this.btnControl(0)
     this.btnTorquer(0)
     this.btnBdot(0)
+    this.btnPower(0)
 
     this.getData()
   }
@@ -126,6 +138,9 @@ export class AdcsComponent implements OnInit {
 
     this.inputBdotEndDate = this.bdotEndDate.toISOString().slice(0, 16)
     this.inputBdotStartDate = this.bdotStartDate.toISOString().slice(0, 16)
+
+    this.inputPowerEndDate = this.powerEndDate.toISOString().slice(0, 16)
+    this.inputPowerStartDate = this.powerStartDate.toISOString().slice(0, 16)
 
   }
 
@@ -341,6 +356,48 @@ export class AdcsComponent implements OnInit {
     this.numBdotStartDate = this.converterDateToNumber(this.bdotStartDate)
     this.numBdotEndDate = this.converterDateToNumber(this.bdotEndDate)
   }
+  btnPower(opcion: number) {
+    this.isRealTime = false
+    //console.log('------------------------------------------------')
+   // console.log(this.EPSEndDate)
+    switch (opcion) {
+      case 7:
+        this.powerEndDate = new Date()
+        this.powerStartDate = new Date(
+          new Date().setDate(this.powerEndDate.getDate() - 7),
+        )
+        //this.EPSstartDate.setDate(this.EPSEndDate.getDate() - 7);
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 3:
+        this.powerEndDate = new Date()
+        this.powerStartDate = new Date(
+          new Date().setDate(this.powerEndDate.getDate() - 3),
+        )
+        //this.EPSstartDate.setDate(this.EPSEndDate.getDate() - 3);
+        this.isRealTime = true
+        this.updateInputs()
+        break
+      case 4:
+        this.powerStartDate = new Date(this.inputPowerStartDate)
+        break
+      case 5:
+        this.powerEndDate = new Date(this.inputPowerEndDate)
+        break
+      default:
+        this.powerEndDate = new Date()
+        this.powerStartDate = new Date(
+          new Date().setDate(this.powerEndDate.getDate() - 0.1),
+        )
+        this.isRealTime = true
+        this.updateInputs()
+        break
+    }
+
+    this.numPowerStartDate = this.converterDateToNumber(this.powerStartDate)
+    this.numPowerEndDate = this.converterDateToNumber(this.powerEndDate)
+  }
 
   //metodos para calcular fechas
   converterDateToNumber(fecha: Date): number {
@@ -374,6 +431,9 @@ export class AdcsComponent implements OnInit {
           this.bdotEndDate = new Date()
           this.numBdotEndDate = this.converterDateToNumber(this.bdotEndDate)
 
+          this.powerEndDate = new Date()
+          this.numPowerEndDate = this.converterDateToNumber(this.powerEndDate)
+
         }
 
         // FIX ME
@@ -383,6 +443,7 @@ export class AdcsComponent implements OnInit {
         this.getDataGraphControl()
         this.getDataGraphTorquer()
         this.getDataGraphBdot()
+        this.getDataGraphPower()
 
       })
   }
@@ -2004,6 +2065,195 @@ export class AdcsComponent implements OnInit {
                 },
               },
             },
+            
+          ],
+        }
+      },
+    )
+  }
+  //========================================================================
+  //Grafica de ADCS Bdot
+  //========================================================================
+  getDataGraphPower() {
+    // Consumo api backend
+    forkJoin({
+      reqPwrGSSB1: this.echarService.getDataSatelliteTimeName(
+        4,
+        'pwrGSSB1',    
+        this.numPowerStartDate,
+        this.numPowerEndDate, 
+      ),
+      reqPwrGSSB2: this.echarService.getDataSatelliteTimeName(
+        4,
+        'pwrGSSB2',    
+        this.numPowerStartDate,
+        this.numPowerEndDate, 
+      ),
+      
+      reqPwrPWM: this.echarService.getDataSatelliteTimeName(
+        4,
+        'pwrPWM',  
+        this.numPowerStartDate,
+        this.numPowerEndDate,  
+      ),  
+
+      reqCurGSSB1: this.echarService.getDataSatelliteTimeName(
+        4,
+        'curGSSB1',    
+        this.numPowerStartDate,
+        this.numPowerEndDate, 
+      ),
+      reqCurGSSB2: this.echarService.getDataSatelliteTimeName(
+        4,
+        'curGSSB2',    
+        this.numPowerStartDate,
+        this.numPowerEndDate, 
+      ),
+      
+      reqCurPWM: this.echarService.getDataSatelliteTimeName(
+        4,
+        'curPWM',  
+        this.numPowerStartDate,
+        this.numPowerEndDate,  
+      ),  
+
+      
+      
+    }).subscribe(
+      ({
+        reqPwrGSSB1,
+        reqPwrGSSB2,
+        reqPwrPWM,
+        reqCurGSSB1,
+        reqCurGSSB2,
+        reqCurPWM,
+      }: any) => {
+        this.optionPower = {
+          title: {
+            text: 'ADCS Power Status',
+            left: 'center',
+          },
+          tooltip: {
+            trigger: 'axis',
+          },
+          legend: {
+            data: ['pwrGSSB1', 'pwrGSSB2', 'pwrPWM','curGSSB1', 'curGSSB2', 'curPWM'],
+            top: '10%',
+          },
+          grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '10%',
+            top: '20%',
+            containLabel: true,
+          },
+          toolbox: {
+            feature: {
+              dataZoom: {
+                yAxisIndex: 'none',
+              },
+              dataView: { readOnly: false },
+              magicType: { type: ['line', 'bar'] },
+              restore: {},
+              saveAsImage: {
+                type: 'png',
+                title: 'Save img',
+              },
+            },
+          },
+          xAxis: [
+            {
+              type: 'category',
+              data: reqPwrGSSB1.dates,
+            },
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '',
+              min: 0,
+              max: 260,
+              interval: 40,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+            {
+              type: 'value',
+              name: '',
+              min: -0.5,
+              max: 0.5,
+              interval: 0.1,
+              axisLabel: {
+                formatter: '{value} ',
+              },
+            },
+          ],
+          series: [
+            {
+              name: 'pwrGSSB1',
+              data: reqPwrGSSB1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+
+            {
+              name: 'pwrGSSB2',
+              data: reqPwrGSSB2.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+
+            {
+              name: 'pwrPWM',
+              data: reqPwrPWM.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+
+            {
+              name: 'curGSSB1',
+              data: reqCurGSSB1.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'curGSSB2',
+              data: reqCurGSSB2.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            {
+              name: 'curPWM',
+              data: reqCurPWM.data,
+              type: 'line',
+              tooltip: {
+                valueFormatter: function (value) {
+                  return value + ' '
+                },
+              },
+            },
+            
             
           ],
         }

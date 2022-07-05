@@ -1,16 +1,23 @@
-<!--<app-basic-line-echarts></app-basic-line-echarts>-->
-<div class="container-fluid-graph">
-    <div class="row">
-      <div class="col col-12 col-md">
-        <div echarts [options]="options" class="chart"></div>
-      </div>
-      <div class="col col-12 col-md">
-        <div echarts [options]="options2" class="chart"></div>
-      </div>
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionComTemp" class="chart"></div>
     </div>
-    <!--Barra de heerramientas de las gráficas-->
-    <div class="row" id="date-range">
-      <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionComRx" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Mode Status-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
         <div class="input-group input-group-sm mb-3">
           <span class="input-group-text" id="inputGroup-sizing-sm">
             Start Date
@@ -18,10 +25,10 @@
           <input
             type="datetime-local"
             class="form-control"
-            name="startDate"
+            name="ComTempStartDate"
             aria-describedby="inputGroup-sizing-sm"
-            [(ngModel)]="inputStarDate"
-            (ngModelChange)="btnWeekEPSOutCurrent(4)"
+            [(ngModel)]="inputComTempStartDate"
+            (ngModelChange)="btnComTemp(4)"
           />
         </div>
       </div>
@@ -32,10 +39,10 @@
           <input
             type="datetime-local"
             class="form-control"
-            name="endDate"
+            name="ComTempEndDate"
             aria-describedby="inputGroup-sizing-sm"
-            [(ngModel)]="inputEndDate"
-            (ngModelChange)="btnWeekEPSOutCurrent(5)"
+            [(ngModel)]="inputComTempEndDate"
+            (ngModelChange)="btnComTemp(5)"
           />
         </div>
       </div>
@@ -44,87 +51,210 @@
         <button
           type="button"
           class="btn btn-primary btn-sm"
-          (click)="btnWeekEPSOutCurrent(7)"
+          (click)="btnComTemp(7)"
         >
           1 week
         </button>
         <button
           type="button"
           class="btn btn-primary btn-sm"
-          (click)="btnWeekEPSOutCurrent(3)"
+          (click)="btnComTemp(3)"
         >
           3 day
         </button>
         <button
           type="button"
           class="btn btn-secondary btn-sm"
-          (click)="btnWeekEPSOutCurrent(1)"
+          (click)="btnComTemp(1)"
         >
           24h
         </button>
       </div>
-  
-      <div class="col col-1 col-md-2" style="height: 50px;">
+    <!--=========================================================-->
+    <!-- Barra de herramientas ADCS Wheels-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
         <div class="input-group input-group-sm mb-3">
           <span class="input-group-text" id="inputGroup-sizing-sm">
-            Start time
+            Start Date
           </span>
           <input
             type="datetime-local"
             class="form-control"
-            name="fecha_nacimiento"
-            aria-label="Sizing example input"
+            name="ComRxStartDate"
             aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComRxStartDate"
+            (ngModelChange)="btnComRx(4)"
           />
         </div>
       </div>
   
       <div class="col col-1 col-md-2" style="height: 50px;">
         <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">
-            Start time
-          </span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
           <input
             type="datetime-local"
             class="form-control"
-            name="fecha_nacimiento"
-            aria-label="Sizing example input"
+            name="ComRxEndDate"
             aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComRxEndDate"
+            (ngModelChange)="btnComRx(5)"
           />
         </div>
       </div>
   
-      <div class="col col-1 col-md-2 col-sm-8" style="height: 50px;">
-        <button type="button" class="btn btn-primary btn-sm">1 week</button>
-        <button type="button" class="btn btn-primary btn-sm">1 day</button>
-        <button type="button" class="btn btn-secondary btn-sm">24h</button>
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComRx(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComRx(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnComRx(1)"
+        >
+          24h
+        </button>
       </div>
+</div>
+<!--=========================================================-->
+<!-- segunda fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionComOther" class="chart"></div>
     </div>
-    <!--=================================================-->
-  
-    <div class="row">
-      <div class="col col-12 col-md">
-        <div echarts [options]="options3" class="chart"></div>
-      </div>
-      <div class="col col-12 col-md">
-        <div echarts [options]="options3" class="chart"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-12 col-md">
-        <div echarts [options]="options4" class="chart"></div>
-      </div>
-      <div class="col col-12 col-md">
-        <div echarts [options]="options4" class="chart"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-12 col-md">
-        <div echarts [options]="options5" class="chart"></div>
-      </div>
-      <div class="col col-12 col-md">
-        2
-      </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionComTx" class="chart"></div>
     </div>
   </div>
   
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Mode Status-->
+  <!-- ========================================================-->
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComOtherpStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComOtherStartDate"
+            (ngModelChange)="btnComOther(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComOtherEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComOtherEndDate"
+            (ngModelChange)="btnComOther(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComOther(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComOther(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnComOther(1)"
+        >
+          24h
+        </button>
+      </div>
+    <!--=========================================================-->
+    <!-- Barra de herramientas ADCS Wheels-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComTxStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComTxStartDate"
+            (ngModelChange)="btnComTx(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComTxEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComTxEndDate"
+            (ngModelChange)="btnComTx(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComTx(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComTx(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnComTx(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>
