@@ -1,2 +1,204 @@
-<h1>obc works!</h1>
-<app-basic-line-echarts></app-basic-line-echarts>
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionTemp" class="chart"></div>
+    </div>
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionMisce" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+
+    <!--=========================================================-->
+  <!-- Barra de herramientas OBC Temperature-->
+  <!-- ========================================================-->
+  <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">
+        Start Date
+      </span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="TempStartDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputTempStartDate"
+        (ngModelChange)="btnTemp(4)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="TempEndDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputTempEndDate"
+        (ngModelChange)="btnTemp(5)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnTemp(7)"
+    >
+      1 week
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnTemp(3)"
+    >
+      3 day
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-sm"
+      (click)="btnTemp(1)"
+    >
+      24h
+    </button>
+  </div>
+    <!--=========================================================-->
+  <!-- Barra de herramientas OBC Miscellaneus-->
+  <!-- ========================================================-->
+  <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">
+        Start Date
+      </span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name="MisceStartDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputMisceStartDate"
+        (ngModelChange)="btnMisce(4)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+      <input
+        type="datetime-local"
+        class="form-control"
+        name= "MisceEndDate"
+        aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="inputMisceEndDate"
+        (ngModelChange)="btnMisce(5)"
+      />
+    </div>
+  </div>
+
+  <div class="col col-1 col-md-2" style="height: 50px;">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnMisce(7)"
+    >
+      1 week
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="btnMisce(3)"
+    >
+      3 day
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-sm"
+      (click)="btnMisce(1)"
+    >
+      24h
+    </button>
+  </div>
+    
+    
+</div>
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <!--======================================================-->
+  <div class="row">
+    <div class="col col-12 col-md">
+      <div echarts [options]="optionPower" class="chart"></div>
+    </div>
+  </div>
+  
+  <div class="row" id="date-range">    
+  
+    <!--=========================================================-->
+    <!-- Barra de herramientas CAM Power-->
+    <!-- ========================================================-->
+    
+    <div class="col col-1 col-md-2 col-sm-6" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="PowerStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputPowerStartDate"
+            (ngModelChange)="btnPower(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="PowerEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputPowerEndDate"
+            (ngModelChange)="btnPower(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnPower(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnPower(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnPower(1)"
+        >
+          24h
+        </button>
+      </div>
+</div>
