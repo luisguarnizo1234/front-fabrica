@@ -26,16 +26,19 @@ export class BasicLineEchartsComponent implements OnInit {
   constructor(private echartService: EchartService) {}
 
   ngOnInit(): void {
-    this.subscription = timer(0, 1000)
+    /*this.subscription = timer(0, 1000)
       .pipe(
         map(() => new Date()),
         share(),
       )
-      .subscribe((time) => {
+
+       .subscribe((time) => {
         this.rxTime = time
         console.log(time)
+
+
         this.echartService
-          .getDataSatellite(6, 'temp2')
+          .getDataSatellite(1, 'temperatura')
           .subscribe((res: any) => {
             var d = new Date(0) // The 0 there is the key, which sets the date to the epoch
 
@@ -63,9 +66,9 @@ export class BasicLineEchartsComponent implements OnInit {
               ],
             }
           })
-      })
+      }) */
     //________________________________________________________________
-    this.echartService.getDataSatellite(6, 'temp2').subscribe((res: any) => {
+    this.echartService.getDataSatellite(2, 'temperatura').subscribe((res: any) => {
       var d = new Date(0) // The 0 there is the key, which sets the date to the epoch
       d.setUTCSeconds(res.dates[0])
       console.log(d)

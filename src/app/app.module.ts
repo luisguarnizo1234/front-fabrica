@@ -14,13 +14,10 @@ import { TelemetryComponent } from './pages/telemetry/telemetry.component';
 import { MenuBarComponent } from './components/page-tools/menu-bar/menu-bar.component';
 import { EpsComponent } from './pages/eps/eps.component';
 import { Ax100Component } from './pages/ax100/ax100.component';
-import { CamComponent } from './pages/cam/cam.component';
-import { AdcsComponent } from './pages/adcs/adcs.component';
-import { ObcComponent } from './pages/obc/obc.component';
 import { EchartService } from './services/echart.service';
 import { ClockComponent } from './reloj/clock/clock.component';
 import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.component';
-import { ADCSSensorComponent } from './pages/adcs-sensor/adcs-sensor.component';
+
 
 
 
@@ -33,12 +30,8 @@ import { ADCSSensorComponent } from './pages/adcs-sensor/adcs-sensor.component';
     MenuBarComponent,
     EpsComponent,
     Ax100Component,
-    CamComponent,
-    AdcsComponent,
-    ObcComponent,
     ClockComponent,
     EPSCurrentGraphComponent,
-    ADCSSensorComponent
    ],
   imports: [
     BrowserModule,
