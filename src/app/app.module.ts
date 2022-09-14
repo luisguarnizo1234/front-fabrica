@@ -17,6 +17,9 @@ import { Ax100Component } from './pages/ax100/ax100.component';
 import { EchartService } from './services/echart.service';
 import { ClockComponent } from './reloj/clock/clock.component';
 import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.component';
+import { Maquina2Component } from './pages/maquina2/maquina2.component';
+import { Maquina3Component } from './pages/maquina3/maquina3.component';
+import { Maquina4Component } from './pages/maquina4/maquina4.component';
 
 
 
@@ -32,6 +35,9 @@ import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.co
     Ax100Component,
     ClockComponent,
     EPSCurrentGraphComponent,
+    Maquina2Component,
+    Maquina3Component,
+    Maquina4Component,
    ],
   imports: [
     BrowserModule,

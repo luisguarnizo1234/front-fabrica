@@ -5,32 +5,43 @@ import { SatelliteComponent } from './components/satellite/satellite.component';
 import { EpsComponent } from './pages/eps/eps.component';
 import { Ax100Component } from './pages/ax100/ax100.component';
 import { TelemetryComponent } from './pages/telemetry/telemetry.component';
+import { Maquina2Component } from './pages/maquina2/maquina2.component';
+import { Maquina3Component } from './pages/maquina3/maquina3.component';
+import { Maquina4Component } from './pages/maquina4/maquina4.component';
 
 
 
 const routes: Routes = [
   {
-    path: 'eps',
-    component: EpsComponent
+    path: 'home',
+    component: Ax100Component
   },
   {
-    path: 'ax100',
+    path: 'M1',
     component: Ax100Component
   }, 
+  {
+    path: 'M2',
+    component: Maquina2Component
+  },
+  {
+    path: 'M3',
+    component: Maquina3Component
+  },
+  {
+    path: 'M4',
+    component: Maquina4Component
+  },
   {
     path: 'demo',
     component: BasicLineEchartsComponent
   },
-/*   {
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    component: EpsComponent
-  }
- */
+  
 ];
 @NgModule({
   declarations: [],

@@ -4,13 +4,12 @@ import { EChartsOption } from 'echarts'
 import { forkJoin, map, share, Subscription, timer } from 'rxjs'
 import { EchartService } from 'src/app/services/echart.service'
 
-
 @Component({
-  selector: 'app-ax100',
-  templateUrl: './ax100.component.html',
-  styleUrls: ['./ax100.component.css']
+  selector: 'app-maquina2',
+  templateUrl: './maquina2.component.html',
+  styleUrls: ['./maquina2.component.css']
 })
-export class Ax100Component implements OnInit {
+export class Maquina2Component implements OnInit {
 
   isRealTime: boolean
   subscription: Subscription
@@ -698,6 +697,5 @@ export class Ax100Component implements OnInit {
       },
     )
   }
-
 
 }

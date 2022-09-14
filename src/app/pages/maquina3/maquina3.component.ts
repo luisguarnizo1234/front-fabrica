@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { end } from '@popperjs/core'
-import { EChartsOption } from 'echarts'
-import { forkJoin, map, share, Subscription, timer } from 'rxjs'
-import { EchartService } from 'src/app/services/echart.service'
-
+import { end } from '@popperjs/core';
+import { EChartsOption } from 'echarts';
+import { forkJoin, map, share, Subscription, timer } from 'rxjs';
+import { EchartService } from 'src/app/services/echart.service';
 
 @Component({
-  selector: 'app-ax100',
-  templateUrl: './ax100.component.html',
-  styleUrls: ['./ax100.component.css']
+  selector: 'app-maquina3',
+  templateUrl: './maquina3.component.html',
+  styleUrls: ['./maquina3.component.css']
 })
-export class Ax100Component implements OnInit {
+export class Maquina3Component implements OnInit {
 
   isRealTime: boolean
   subscription: Subscription

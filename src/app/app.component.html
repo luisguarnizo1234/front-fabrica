@@ -22,145 +22,11 @@
           <li>
             <a href="#">Total rx bytes: {{ tot_rx_count }}</a>
           </li>
-          <li>
-            <a href="#">Total tx bytes: {{ tot_tx_count }}</a>
-          </li>
-          <li>
-            <a href="#">Last RSSI: {{ last_rssi }} dBm</a>
-          </li>
-          <li>
-            <a href="#">last RF error: {{ last_rferr }} Hz</a>
-          </li>
-
-          <li>
-            <a href="#">Backgroun RSSI: {{ bgnd_rssi }} dBm</a>
-          </li>
-          <li>
-            <a href="#">COM Bost Count: {{ boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">PA Temperature: {{ temp_pa }} °C</a>
-          </li>
-          <li>
-            <a href="#">Reboot Cause: {{ temp_brd }}</a>
-          </li>
-          <li>
-            <a href="#">Last contac: {{ last_contact }}</a>
-          </li>
+          
         </ul>
       </li>
-      <!--Menú de EPS-->
       
-      <li>
-        <a
-          href="#EPSSubmenu"
-          data-toggle="collapse"
-          aria-expanded="false"
-          class="dropdown-toggle"
-        >
-          EPS status
-        </a>
-        <ul class="collapse list-unstyled" id="EPSSubmenu">
-          <li>
-            <a href="#">WDE: {{ WDE_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">GPS: {{ GPS_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">AX100: {{ AX100_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">CAM: {{ CAM_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">OBC: {{ ADCS_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">ADCS: {{ OBC_curout }} mA</a>
-          </li>
-          <li>
-            <a href="#">EPS VBatt: {{ OBC_curout }} mV</a>
-          </li>
-          <li>
-            <a href="#">cursys: {{ cursun }} mA</a>
-          </li>
-          <li>
-            <a href="#">cursun: {{ cursys }} mA</a>
-          </li>
-        </ul>
-      </li>
 
-      <!--Menú de BOOT Count-->
-      <li>
-        <a
-          href="#bootSubmenu"
-          data-toggle="collapse"
-          aria-expanded="false"
-          class="dropdown-toggle"
-        >
-          Boot Count
-        </a>
-        <ul class="collapse list-unstyled" id="bootSubmenu">
-          <li>
-            <a href="#">ADCS Boot counter:  {{ ADCS_boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">OBC Boot Count:  {{ OBC_boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">EPS Boot Count:  {{ EPS_boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">CAM Boot Count:  {{ CAM_boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">COM Boot Count:  {{ COM_boot_count }}</a>
-          </li>
-        </ul>
-      </li>
-
-      <!--Menú de MISC-->
-      <li>
-        <a
-          href="#miscSubmenu"
-          data-toggle="collapse"
-          aria-expanded="false"
-          class="dropdown-toggle"
-        >
-          MISC
-        </a>
-        <ul class="collapse list-unstyled" id="miscSubmenu">
-          <li>
-            <a href="#">image-count: {{ image_count }}</a>
-          </li>
-          <li>
-            <a href="#">gps_pos[0]: {{ gps_pos0 }}</a>
-          </li>
-          <li>
-            <a href="#">gps_pos[1]: {{ gps_pos1 }}</a>
-          </li>
-          <li>
-            <a href="#">gps_pos[2]: {{ gps_pos2 }}</a>
-          </li>
-          <li>
-            <a href="#">COM Boot Count:  {{ COM_boot_count }}</a>
-          </li>
-          <li>
-            <a href="#">cntWdtGnd: {{ cntWdtGnd }}</a>
-          </li>
-          <li>
-            <a href="#">wdtGndS: {{ wdtGndS }}</a>
-          </li>
-        </ul>
-      </li>
-      <div class="sidebar-header">
-        <!--<img src="./assets/CITAE.png" alt="" width="150" height="150" />-->
-      </div>
-
-
-
-     
     </ul>
   </nav>
 
@@ -189,7 +55,7 @@
             <li class="nav-item active">
               <a
                 class="nav-link"
-                href="#"
+                href="/M1"
                 style="
                   color: white;
                   border-radius: 25%;
@@ -203,7 +69,7 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="/adcs"
+                href="/M1"
                 style="
                   color: white;
                   border-radius: 25%;
@@ -211,13 +77,13 @@
                   margin-right: 10px;
                 "
               >
-                ADCS Control
+                MAQUINA 1
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="adcs-sensors"
+                href="/M2"
                 style="
                   color: white;
                   border-radius: 25%;
@@ -225,13 +91,13 @@
                   margin-right: 10px;
                 "
               >
-                ADCS Sensors
+                MAQUINA 2
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="/ax100"
+                href="/M3"
                 style="
                   color: white;
                   border-radius: 25%;
@@ -239,13 +105,13 @@
                   margin-right: 10px;
                 "
               >
-                AX100
+                MAQUINA 3
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="/cam"
+                href="/M4"
                 style="
                   color: white;
                   border-radius: 25%;
@@ -253,7 +119,7 @@
                   margin-right: 10px;
                 "
               >
-                CAM
+                MAQUINA 4
               </a>
             </li>
             <li class="nav-item active">
@@ -267,7 +133,7 @@
                   margin-right: 10px;
                 "
               >
-                EPS
+              MAQUINA 5
               </a>
             </li>
             <li class="nav-item active">
@@ -281,7 +147,7 @@
                   margin-right: 10px;
                 "
               >
-                OBC
+              MAQUINA 6
               </a>
             </li>
           </ul>
