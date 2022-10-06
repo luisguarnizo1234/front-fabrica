@@ -10,8 +10,8 @@ import { Satellite } from '../models/satellite.model';
 })
 export class EchartService {
   
-  private urlBase = 'https://app-backend-fabrica.herokuapp.com/v1';
-  //private urlBase = 'http://localhost:8080/v1';
+  //private urlBase = 'https://app-backend-fabrica.herokuapp.com/v1';
+  private urlBase = 'http://localhost:8080/v1';
 
   constructor(private httpClient: HttpClient){}
   getbasicLineEchartData(): Observable <BasicEchartLineModel[]>{

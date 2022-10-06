@@ -20,6 +20,7 @@ import { EPSCurrentGraphComponent } from './epscurrent-graph/epscurrent-graph.co
 import { Maquina2Component } from './pages/maquina2/maquina2.component';
 import { Maquina3Component } from './pages/maquina3/maquina3.component';
 import { Maquina4Component } from './pages/maquina4/maquina4.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
 
 
@@ -38,8 +39,10 @@ import { Maquina4Component } from './pages/maquina4/maquina4.component';
     Maquina2Component,
     Maquina3Component,
     Maquina4Component,
+    ReporteComponent,
    ],
   imports: [
+    FormsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

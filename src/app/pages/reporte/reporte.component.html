@@ -1,0 +1,113 @@
+<!--=========================================================-->
+<!-- primer fila de graficas-->
+<!-- ========================================================-->  
+
+<div class="container-fluid-graph"></div>
+  <div class="row" id="date-range">    
+  <!--=========================================================-->
+  <!-- Barra de herramientas Mode Status-->
+  <!-- ========================================================-->
+    <div class="col col-1  " style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">
+            Start Date
+          </span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComTempStartDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComTempStartDate"
+            (ngModelChange)="btnComTemp(4)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <div class="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+          <input
+            type="datetime-local"
+            class="form-control"
+            name="ComTempEndDate"
+            aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="inputComTempEndDate"
+            (ngModelChange)="btnComTemp(5)"
+          />
+        </div>
+      </div>
+  
+      <div class="col col-1 col-md-2" style="height: 50px;">
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComTemp(7)"
+        >
+          1 week
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="btnComTemp(3)"
+        >
+          3 day
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          (click)="btnComTemp(1)"
+        >
+          24h
+        </button>
+      </div>
+   
+
+
+<div class="container mt-5">
+    <select class="form-select" [(ngModel)]= "selected" (change)="cathMaquina()" >
+        <option *ngFor="let n of maquinas">
+            {{ n }}
+        </option>
+        
+    </select>
+    <!-- {{selected}} -->
+    <select class="form-select" [(ngModel)]= "selected2" (change)="cathSensor()" >
+        <option *ngFor="let n of sensores">
+            {{ n }}
+        </option>
+        
+    </select>
+    <!-- {{selected2}} -->
+</div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Maquina</th>
+      <th scope="col">Sensor</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let objeto of arrayObjetos">
+      <th scope="row">{{objeto.maquina}}</th>
+      <td>{{objeto.sensor}}</td>
+      <td>{{objeto.valor}}</td>
+
+      <td [ngClass]="{
+        azul: objeto.valor < 10, 
+        verde: objeto.valor >=10 && objeto.valor < 23, 
+        amarilloClaro: objeto.valor >= 23 && objeto.valor < 33,
+        amarillo: objeto.valor >=33 && objeto.valor < 50, 
+        amarilloOscuro: objeto.valor >= 50 && objeto.valor < 66,
+        rojoClaro: objeto.valor >= 66 && objeto.valor < 83,
+        rojo: objeto.valor >= 83}">
+        {{ objeto.estado }}</td>
+        
+      <!-- <td>{{objeto.estado}}</td> -->
+    </tr>
+    
+  </tbody>
+</table>
+

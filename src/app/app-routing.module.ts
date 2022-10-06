@@ -8,6 +8,7 @@ import { TelemetryComponent } from './pages/telemetry/telemetry.component';
 import { Maquina2Component } from './pages/maquina2/maquina2.component';
 import { Maquina3Component } from './pages/maquina3/maquina3.component';
 import { Maquina4Component } from './pages/maquina4/maquina4.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
 
 
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: 'demo',
     component: BasicLineEchartsComponent
   },
+  {
+    path: 'reporte',
+    component: ReporteComponent
+  },
+  
   {
     path: '',
     redirectTo: '/home',
