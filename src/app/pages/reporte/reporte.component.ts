@@ -15,7 +15,7 @@ export class ReporteComponent implements OnInit {
   isRealTime: boolean
   subscription: Subscription
   rxTime = new Date()
-  timeUpdate = 10000
+  timeUpdate = 1000
   r = 0
 
   nMaquinas = 0;
